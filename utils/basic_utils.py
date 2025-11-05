@@ -628,13 +628,13 @@ def demonstrate_conditionals(user_age, book_available, fine_amount):
     if user_age >= 13:
         if fine_amount == 0:
             if book_available:
-                print("✓ Eligible to borrow this book")
+                print("[SUCCESS] Eligible to borrow this book")
             else:
-                print("✗ Book not available")
+                print("[ERROR] Book not available")
         else:
-            print("✗ Must clear fines first")
+            print("[ERROR] Must clear fines first")
     else:
-        print("✗ Must be 13 or older")
+        print("[ERROR] Must be 13 or older")
     
     # Conditional expressions (ternary operator)
     # Format: value_if_true if condition else value_if_false
@@ -646,10 +646,10 @@ def demonstrate_conditionals(user_age, book_available, fine_amount):
     is_book_reserved = False
     
     if has_membership and book_available and not is_book_reserved:
-        print("✓ Can borrow this book now")
+        print("[SUCCESS] Can borrow this book now")
     elif not has_membership:
-        print("✗ Need membership to borrow")
+        print("[ERROR] Need membership to borrow")
     elif is_book_reserved:
-        print("✗ Book is reserved by another user")
+        print("[ERROR] Book is reserved by another user")
     else:
-        print("✗ Book not currently available")
+        print("[ERROR] Book not currently available")

@@ -87,9 +87,9 @@ class Library:
         """
         if isinstance(book, LibraryItem):
             self.__books.append(book)
-            print(f"✓ Added: {book.get_info()}")
+            print(f"[SUCCESS] Added: {book.get_info()}")
             return True
-        print("✗ Invalid book object")
+        print("[ERROR] Invalid book object")
         return False
     
     def register_user(self, user):
@@ -97,7 +97,7 @@ class Library:
         if isinstance(user, User):
             self.__users.append(user)
             self.__borrowed_records[user.user_id] = []
-            print(f"✓ Registered: {user.get_user_info()}")
+            print(f"[SUCCESS] Registered: {user.get_user_info()}")
             return True
         return False
     
@@ -124,26 +124,26 @@ class Library:
         book = self.find_book_by_id(book_id)
         
         if not user:
-            print(f"✗ User {user_id} not found")
+            print(f"[ERROR] User {user_id} not found")
             return False
         
         if not book:
-            print(f"✗ Book {book_id} not found")
+            print(f"[ERROR] Book {book_id} not found")
             return False
         
         # Check if user can borrow (polymorphic behavior)
         if not user.can_borrow():
-            print(f"✗ {user.name} cannot borrow (reached limit or has fines)")
+            print(f"[ERROR] {user.name} cannot borrow (reached limit or has fines)")
             return False
         
         # Try to borrow the book
         if book.borrow(user_id):
             user.borrow_book(book_id)
             self.__borrowed_records[user_id].append(book_id)
-            print(f"✓ {user.name} borrowed '{book.title}'")
+            print(f"[SUCCESS] {user.name} borrowed '{book.title}'")
             return True
         else:
-            print(f"✗ '{book.title}' is not available")
+            print(f"[ERROR] '{book.title}' is not available")
             return False
     
     def return_book(self, user_id, book_id):
@@ -169,9 +169,9 @@ class Library:
             days_late = days_borrowed - borrow_period
             late_fee = book.calculate_late_fee(days_late)
             user.add_fine(late_fee)
-            print(f"✓ {user.name} returned '{book.title}' - Late fee: ${late_fee:.2f}")
+            print(f"[SUCCESS] {user.name} returned '{book.title}' - Late fee: ${late_fee:.2f}")
         else:
-            print(f"✓ {user.name} returned '{book.title}' - On time!")
+            print(f"[SUCCESS] {user.name} returned '{book.title}' - On time!")
         
         return True
     

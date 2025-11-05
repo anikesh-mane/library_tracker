@@ -9,7 +9,7 @@ Demonstrates:
 - CONCEPT 15: Functions Part 3 - zip, variable scope
 """
 
-from functools import reduce
+from functools import reduce  # CONCEPT 14: Functions Part 2 - reduce
 from datetime import datetime, timedelta
 
 

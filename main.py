@@ -19,9 +19,7 @@ This is the main entry point of the application.
 # ============================================================================
 # Demonstrating importing from custom modules
 # We organize code into separate files for maintainability
-import sys
-from datetime import datetime, timedelta
-from functools import reduce  # CONCEPT 14: Functions Part 2 - reduce
+
 
 # Import our custom modules (these will be in separate files)
 from library import Library
@@ -186,19 +184,19 @@ def main():
     # Save library data to file
     try:
         save_library_data(library, "data/library_data.txt")
-        print("✓ Library data saved successfully")
+        print("[SUCCESS] Library data saved successfully")
     except Exception as e:
-        print(f"✗ Error saving data: {e}")
+        print(f"[ERROR] Error saving data: {e}")
     
     # Load library data from file
     try:
         loaded_library = load_library_data("data/library_data.txt")
-        print("✓ Library data loaded successfully")
+        print("[SUCCESS] Library data loaded successfully")
         print(f"Loaded library: {loaded_library.name}")
     except FileNotFoundError:
-        print("✗ Library data file not found")
+        print("[ERROR] Library data file not found")
     except Exception as e:
-        print(f"✗ Error loading data: {e}")
+        print(f"[ERROR] Error loading data: {e}")
     
     # ========================================================================
     # Interactive Menu (Simulated)

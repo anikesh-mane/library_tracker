@@ -81,22 +81,22 @@ def save_library_data(library, filename):
                 file.write(f"Fine: ${user.get_fine_amount():.2f}\n")
                 file.write("-"*50 + "\n")
         
-        print(f"✓ Successfully saved library data to '{filename}'")
+        print(f"[SUCCESS] Successfully saved library data to '{filename}'")
         return True
     
     except PermissionError:
         # Specific exception for permission-related errors
-        print(f"✗ Permission denied: Cannot write to '{filename}'")
+        print(f"[ERROR] Permission denied: Cannot write to '{filename}'")
         return False
     
     except IOError as e:
         # IO errors (Input/Output errors)
-        print(f"✗ IO Error while saving: {e}")
+        print(f"[ERROR] IO Error while saving: {e}")
         return False
     
     except Exception as e:
         # Catch-all for any other exceptions
-        print(f"✗ Unexpected error while saving: {e}")
+        print(f"[ERROR] Unexpected error while saving: {e}")
         return False
 
 
@@ -128,7 +128,7 @@ def load_library_data(filename):
         if lines and '===' in lines[0]:
             library_name = lines[0].replace('===', '').strip().replace(' Data', '')
         
-        print(f"✓ Successfully loaded data from '{filename}'")
+        print(f"[SUCCESS] Successfully loaded data from '{filename}'")
         
         # For demonstration, we'll return a simple object
         # In a real application, you'd reconstruct the full library
@@ -140,22 +140,22 @@ def load_library_data(filename):
     
     except FileNotFoundError:
         # Raised when file doesn't exist
-        print(f"✗ File not found: '{filename}'")
+        print(f"[ERROR] File not found: '{filename}'")
         raise  # Re-raise the exception to caller
     
     except PermissionError:
         # Raised when lacking permission to read file
-        print(f"✗ Permission denied: Cannot read '{filename}'")
+        print(f"[ERROR] Permission denied: Cannot read '{filename}'")
         raise
     
     except UnicodeDecodeError:
         # Raised when file encoding is incorrect
-        print(f"✗ Encoding error: Cannot decode '{filename}'")
+        print(f"[ERROR] Encoding error: Cannot decode '{filename}'")
         raise
     
     except Exception as e:
         # Catch-all for other exceptions
-        print(f"✗ Error loading file: {e}")
+        print(f"[ERROR] Error loading file: {e}")
         raise
     
     else:
@@ -203,11 +203,11 @@ def save_books_to_csv(books, filename):
                     'available': book.is_available()
                 })
         
-        print(f"✓ Saved {len(books)} books to CSV: '{filename}'")
+        print(f"[SUCCESS] Saved {len(books)} books to CSV: '{filename}'")
         return True
     
     except IOError as e:
-        print(f"✗ Error saving CSV: {e}")
+        print(f"[ERROR] Error saving CSV: {e}")
         return False
 
 
@@ -252,23 +252,23 @@ def load_books_from_csv(filename):
                 
                 except ValueError as e:
                     # Handle conversion errors for specific rows
-                    print(f"✗ Error in row {row_num}: {e}")
+                    print(f"[ERROR] Error in row {row_num}: {e}")
                     continue  # Skip this row and continue with next
                 
                 except KeyError as e:
                     # Handle missing columns
-                    print(f"✗ Missing column in row {row_num}: {e}")
+                    print(f"[ERROR] Missing column in row {row_num}: {e}")
                     continue
         
-        print(f"✓ Loaded {len(books_data)} books from CSV: '{filename}'")
+        print(f"[SUCCESS] Loaded {len(books_data)} books from CSV: '{filename}'")
         return books_data
     
     except FileNotFoundError:
-        print(f"✗ CSV file not found: '{filename}'")
+        print(f"[ERROR] CSV file not found: '{filename}'")
         return []
     
     except Exception as e:
-        print(f"✗ Error reading CSV: {e}")
+        print(f"[ERROR] Error reading CSV: {e}")
         return []
 
 
@@ -304,16 +304,16 @@ def save_books_to_json(books, filename):
             # ensure_ascii=False allows unicode characters
             json.dump(books_list, jsonfile, indent=2, ensure_ascii=False)
         
-        print(f"✓ Saved {len(books)} books to JSON: '{filename}'")
+        print(f"[SUCCESS] Saved {len(books)} books to JSON: '{filename}'")
         return True
     
     except TypeError as e:
         # JSON can't serialize certain Python objects
-        print(f"✗ JSON serialization error: {e}")
+        print(f"[ERROR] JSON serialization error: {e}")
         return False
     
     except IOError as e:
-        print(f"✗ Error saving JSON: {e}")
+        print(f"[ERROR] Error saving JSON: {e}")
         return False
 
 
@@ -327,20 +327,20 @@ def load_books_from_json(filename):
             # Load JSON data into Python objects (list of dicts)
             books_data = json.load(jsonfile)
         
-        print(f"✓ Loaded {len(books_data)} books from JSON: '{filename}'")
+        print(f"[SUCCESS] Loaded {len(books_data)} books from JSON: '{filename}'")
         return books_data
     
     except FileNotFoundError:
-        print(f"✗ JSON file not found: '{filename}'")
+        print(f"[ERROR] JSON file not found: '{filename}'")
         return []
     
     except json.JSONDecodeError as e:
         # Raised when JSON is malformed
-        print(f"✗ Invalid JSON format: {e}")
+        print(f"[ERROR] Invalid JSON format: {e}")
         return []
     
     except Exception as e:
-        print(f"✗ Error reading JSON: {e}")
+        print(f"[ERROR] Error reading JSON: {e}")
         return []
 
 
@@ -367,7 +367,7 @@ def log_transaction(transaction_type, details, logfile="library_log.txt"):
         return True
     
     except IOError as e:
-        print(f"✗ Error writing to log: {e}")
+        print(f"[ERROR] Error writing to log: {e}")
         return False
 
 
@@ -387,11 +387,11 @@ def read_log_file(logfile="library_log.txt", num_lines=10):
             return lines[-num_lines:] if len(lines) > num_lines else lines
     
     except FileNotFoundError:
-        print(f"✗ Log file not found: '{logfile}'")
+        print(f"[ERROR] Log file not found: '{logfile}'")
         return []
     
     except Exception as e:
-        print(f"✗ Error reading log: {e}")
+        print(f"[ERROR] Error reading log: {e}")
         return []
 
 
@@ -415,11 +415,11 @@ def save_binary_data(data, filename):
                 data = data.encode('utf-8')
             file.write(data)
         
-        print(f"✓ Saved binary data to '{filename}'")
+        print(f"[SUCCESS] Saved binary data to '{filename}'")
         return True
     
     except Exception as e:
-        print(f"✗ Error saving binary data: {e}")
+        print(f"[ERROR] Error saving binary data: {e}")
         return False
 
 
@@ -433,15 +433,15 @@ def load_binary_data(filename):
         with open(filename, 'rb') as file:
             data = file.read()
         
-        print(f"✓ Loaded {len(data)} bytes from '{filename}'")
+        print(f"[SUCCESS] Loaded {len(data)} bytes from '{filename}'")
         return data
     
     except FileNotFoundError:
-        print(f"✗ Binary file not found: '{filename}'")
+        print(f"[ERROR] Binary file not found: '{filename}'")
         return None
     
     except Exception as e:
-        print(f"✗ Error loading binary data: {e}")
+        print(f"[ERROR] Error loading binary data: {e}")
         return None
 
 
@@ -475,32 +475,32 @@ def safe_file_operation(filename, operation="read"):
             return True
     
     except FileNotFoundError:
-        print(f"✗ FileNotFoundError: '{filename}' does not exist")
+        print(f"[ERROR] FileNotFoundError: '{filename}' does not exist")
         raise LibraryFileError("File not found", filename)
     
     except PermissionError:
-        print(f"✗ PermissionError: No permission to access '{filename}'")
+        print(f"[ERROR] PermissionError: No permission to access '{filename}'")
         raise LibraryFileError("Permission denied", filename)
     
     except IOError as e:
-        print(f"✗ IOError: {e}")
+        print(f"[ERROR] IOError: {e}")
         raise LibraryFileError(f"IO operation failed: {e}", filename)
     
     else:
         # Executes only if no exception occurred
-        print("✓ File operation completed successfully (else block)")
+        print("[SUCCESS] File operation completed successfully (else block)")
     
     finally:
         # Always executes - cleanup code
         if file_handle:
             if not file_handle.closed:
                 file_handle.close()
-                print("✓ File closed in finally block")
+                print("[SUCCESS] File closed in finally block")
         
         if success:
-            print("✓ Operation status: SUCCESS")
+            print("[SUCCESS] Operation status: SUCCESS")
         else:
-            print("✗ Operation status: FAILED")
+            print("[ERROR] Operation status: FAILED")
 
 
 # ============================================================================
@@ -532,7 +532,7 @@ def validate_and_process_book_data(book_data):
             raise ValueError(f"Year {year} is out of valid range (1000-2100)")
     
     # If all validations pass
-    print("✓ Book data is valid")
+    print("[SUCCESS] Book data is valid")
     return True
 
 
@@ -556,15 +556,15 @@ def robust_file_backup(source_file, backup_file):
         except PermissionError:
             raise LibraryFileError(f"Cannot write to '{backup_file}'")
         
-        print(f"✓ Successfully backed up '{source_file}' to '{backup_file}'")
+        print(f"[SUCCESS] Successfully backed up '{source_file}' to '{backup_file}'")
         return True
     
     except LibraryFileError as e:
-        print(f"✗ Backup failed: {e}")
+        print(f"[ERROR] Backup failed: {e}")
         return False
     
     except Exception as e:
-        print(f"✗ Unexpected error during backup: {e}")
+        print(f"[ERROR] Unexpected error during backup: {e}")
         return False
 
 
@@ -586,16 +586,16 @@ def demonstrate_exception_handling():
     try:
         result = 10 / 0  # This will raise ZeroDivisionError
     except ZeroDivisionError:
-        print("  ✗ Cannot divide by zero!")
+        print("  [ERROR] Cannot divide by zero!")
     
     # Example 2: Multiple except blocks
     print("\n2. Multiple except blocks:")
     try:
         number = int("not_a_number")  # ValueError
     except ValueError:
-        print("  ✗ ValueError: Invalid number format")
+        print("  [ERROR] ValueError: Invalid number format")
     except TypeError:
-        print("  ✗ TypeError: Wrong type")
+        print("  [ERROR] TypeError: Wrong type")
     
     # Example 3: Catching exception object
     print("\n3. Catching exception details:")
@@ -603,25 +603,25 @@ def demonstrate_exception_handling():
         numbers = [1, 2, 3]
         print(numbers[10])  # IndexError
     except IndexError as e:
-        print(f"  ✗ IndexError: {e}")
+        print(f"  [ERROR] IndexError: {e}")
     
     # Example 4: try-except-else
     print("\n4. try-except-else:")
     try:
         result = 10 / 2
     except ZeroDivisionError:
-        print("  ✗ Division error")
+        print("  [ERROR] Division error")
     else:
-        print(f"  ✓ Division successful: {result}")
+        print(f"  [SUCCESS] Division successful: {result}")
     
     # Example 5: try-except-finally
     print("\n5. try-except-finally:")
     try:
         file = open("test.txt", "r")
     except FileNotFoundError:
-        print("  ✗ File not found")
+        print("  [ERROR] File not found")
     finally:
-        print("  ✓ Cleanup code executed (finally block)")
+        print("  [SUCCESS] Cleanup code executed (finally block)")
     
     # Example 6: Raising exceptions
     print("\n6. Raising exceptions:")
@@ -630,11 +630,11 @@ def demonstrate_exception_handling():
         if age < 0:
             raise ValueError("Age cannot be negative")
     except ValueError as e:
-        print(f"  ✗ {e}")
+        print(f"  [ERROR] {e}")
     
     # Example 7: Custom exceptions
     print("\n7. Custom exceptions:")
     try:
         raise LibraryFileError("Custom error occurred", "test.txt")
     except LibraryFileError as e:
-        print(f"  ✗ {e}")
+        print(f"  [ERROR] {e}")
