@@ -28,18 +28,29 @@ This project demonstrates the following Python concepts:
 18. ✅ **OOP Part 3** - inheritance
 19. ✅ **OOP Part 4** - polymorphism, abstract classes
 20. ✅ **File Handling & Exception Handling** - reading/writing files, error handling
-21. ✅ **Modules & Packages** - organizing code into multiple files
+21. ✅ **Modules & Packages** - organizing code into multiple files (imports, modules & packages)
 
 ## 📁 Project Structure
 
 ```
 library_tracker/
+├── books/
+│   ├── __init__.py         # Makes 'books' a package.
+│   ├── book.py             # Defines the base Book class (OOP).
+│   └── ebook.py            # Defines the Ebook class (inherits from book.py).
 │
-├── main.py                 # Main entry point and demonstrations
-├── library_classes.py      # OOP classes (Book, EBook, User, Library)
-├── library_utils.py        # Utility functions (map, filter, reduce, zip)
-├── file_operations.py      # File handling and exception handling
-└── README.md              # This file
+├── files/
+│   └── ops.py              # Handles file operations (File & Exception Handling).
+│
+├── utils/
+│   ├── basic_utils.py      # General utility functions (python basics i.e operators/collections/control structures etc).
+│   └── library_utils.py    # Utility functions specific to managing library data (functional programming).
+│
+├── .gitignore              # Specifies files and folders to ignore in version control.
+├── library.py              # Contains core Library management logic (OOP).
+├── main.py                 # The main entry point for running the application (imports).
+├── README.md               # This file: Project overview and setup instructions.
+└── user.py                 # Defines the User class and user-specific methods (OOP).
 ```
 
 ## 🚀 How to Run
@@ -49,7 +60,7 @@ library_tracker/
 
 ### Running the Project
 
-1. **Save all files** in the same directory:
+1. **Save all files & folders** in the same directory:
    - `main.py`
    - `library_classes.py`
    - `library_utils.py`
@@ -82,7 +93,7 @@ The main entry point that:
 - Integrates all components into a cohesive library system
 - Shows how different concepts work together
 
-### `library_classes.py`
+### `library.py` `book.py` `ebook.py` `user.py`
 Contains all Object-Oriented Programming demonstrations:
 - **`LibraryItem`**: Abstract base class (polymorphism foundation)
 - **`Book`**: Main book class with encapsulation
@@ -101,7 +112,7 @@ Utility functions demonstrating:
 - Lambda functions
 - Higher-order functions
 
-### `file_operations.py`
+### `files/ops.py`
 File handling and exception handling:
 - Reading and writing text files
 - CSV file operations
