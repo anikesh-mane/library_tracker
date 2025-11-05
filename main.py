@@ -74,60 +74,60 @@ def main():
     print(f"WELCOME TO {LIBRARY_NAME}")
     print("="*60)
     
-    # Run all demonstration functions
-    demonstrate_operators()
+    # # Run all demonstration functions
+    # demonstrate_operators()
     
-    # Sample data for demonstrations
-    sample_book_titles = [
-        "Python Crash Course",
-        "Clean Code",
-        "The Pragmatic Programmer",
-        "Design Patterns"
-    ]
+    # # Sample data for demonstrations
+    # sample_book_titles = [
+    #     "Python Crash Course",
+    #     "Clean Code",
+    #     "The Pragmatic Programmer",
+    #     "Design Patterns"
+    # ]
     
-    demonstrate_string_operations()
-    demonstrate_string_functions()
-    demonstrate_bitwise_operations()
-    demonstrate_while_loop()
-    demonstrate_for_loop(sample_book_titles)
+    # demonstrate_string_operations()
+    # demonstrate_string_functions()
+    # demonstrate_bitwise_operations()
+    # demonstrate_while_loop()
+    # demonstrate_for_loop(sample_book_titles)
     
-    # Sample books for comprehensions
-    sample_books = [
-        {"id": 101, "title": "Python Basics", "genre": "Programming", "available": True},
-        {"id": 102, "title": "Java Guide", "genre": "Programming", "available": False},
-        {"id": 103, "title": "Web Design", "genre": "Design", "available": True},
-        {"id": 104, "title": "Data Science", "genre": "Programming", "available": True},
-    ]
+    # # Sample books for comprehensions
+    # sample_books = [
+    #     {"id": 101, "title": "Python Basics", "genre": "Programming", "available": True},
+    #     {"id": 102, "title": "Java Guide", "genre": "Programming", "available": False},
+    #     {"id": 103, "title": "Web Design", "genre": "Design", "available": True},
+    #     {"id": 104, "title": "Data Science", "genre": "Programming", "available": True},
+    # ]
     
-    demonstrate_comprehensions(sample_books)
-    get_user_input_demo()
-    demonstrate_lists_and_tuples()
-    demonstrate_sets_and_dictionaries()
-    demonstrate_conditionals(user_age=25, book_available=True, fine_amount=2.50)
+    # demonstrate_comprehensions(sample_books)
+    # get_user_input_demo()
+    # demonstrate_lists_and_tuples()
+    # demonstrate_sets_and_dictionaries()
+    # demonstrate_conditionals(user_age=25, book_available=True, fine_amount=2.50)
     
-    # ========================================================================
-    # CONCEPT 13, 14, 15: Functions (will be in library_utils.py)
-    # ========================================================================
-    print("\n" + "="*60)
-    print("DEMONSTRATING FUNCTIONS FROM UTILITY MODULE")
-    print("="*60)
+    # # ========================================================================
+    # # CONCEPT 13, 14, 15: Functions (will be in library_utils.py)
+    # # ========================================================================
+    # print("\n" + "="*60)
+    # print("DEMONSTRATING FUNCTIONS FROM UTILITY MODULE")
+    # print("="*60)
     
-    # Using functions from library_utils module
-    new_book_id = generate_book_id(101)
-    print(f"Generated book ID: {new_book_id}")
+    # # Using functions from library_utils module
+    # new_book_id = generate_book_id(101)
+    # print(f"Generated book ID: {new_book_id}")
     
-    book_details = {"title": "Python Guide", "author": "John Smith", "year": 2023}
-    formatted = format_book_info(book_details)
-    print(f"Formatted book info: {formatted}")
+    # book_details = {"title": "Python Guide", "author": "John Smith", "year": 2023}
+    # formatted = format_book_info(book_details)
+    # print(f"Formatted book info: {formatted}")
     
-    days_late = 5
-    fine = calculate_fine(days_late)
-    print(f"Fine for {days_late} days late: ${fine:.2f}")
+    # days_late = 5
+    # fine = calculate_fine(days_late)
+    # print(f"Fine for {days_late} days late: ${fine:.2f}")
     
-    # Demonstrating bitwise permission function
-    permissions = 7  # CAN_BORROW | CAN_RESERVE | CAN_RENEW
-    can_borrow = binary_permission_check(permissions, 1)
-    print(f"User has borrow permission: {can_borrow}")
+    # # Demonstrating bitwise permission function
+    # permissions = 7  # CAN_BORROW | CAN_RESERVE | CAN_RENEW
+    # can_borrow = binary_permission_check(permissions, 1)
+    # print(f"User has borrow permission: {can_borrow}")
     
     # ========================================================================
     # CONCEPT 16, 17, 18, 19: OOP
@@ -140,13 +140,15 @@ def main():
     book1 = Book(101, "Python Programming", "John Doe", 2023)
     book2 = EBook(102, "Web Development", "Jane Smith", 2024, 5.2, "PDF")
     
+    print(f"Total books created: {Book.get_total_books()}")  # Class method
     print(f"\nBook 1: {book1.get_info()}")
     print(f"Book 2: {book2.get_info()}")  # Polymorphism - different implementation
     
     # Creating User objects
     user1 = User("Alice", "alice@email.com", 1001)
     user2 = PremiumUser("Bob", "bob@email.com", 1002, premium_level="Gold")
-    
+
+    print(f"Total users created: {User.total_users}")  # Class method
     print(f"\nUser 1: {user1.get_user_info()}")
     print(f"User 2: {user2.get_user_info()}")  # Inheritance - PremiumUser extends User
     
@@ -174,55 +176,55 @@ def main():
     # Return a book
     library.return_book(1001, 101)
     
-    # ========================================================================
-    # CONCEPT 20: FILE HANDLING & EXCEPTION HANDLING
-    # ========================================================================
-    print("\n" + "="*60)
-    print("DEMONSTRATING FILE HANDLING & EXCEPTION HANDLING")
-    print("="*60)
+    # # ========================================================================
+    # # CONCEPT 20: FILE HANDLING & EXCEPTION HANDLING
+    # # ========================================================================
+    # print("\n" + "="*60)
+    # print("DEMONSTRATING FILE HANDLING & EXCEPTION HANDLING")
+    # print("="*60)
     
-    # Save library data to file
-    try:
-        save_library_data(library, "data/library_data.txt")
-        print("[SUCCESS] Library data saved successfully")
-    except Exception as e:
-        print(f"[ERROR] Error saving data: {e}")
+    # # Save library data to file
+    # try:
+    #     save_library_data(library, "data/library_data.txt")
+    #     print("[SUCCESS] Library data saved successfully")
+    # except Exception as e:
+    #     print(f"[ERROR] Error saving data: {e}")
     
-    # Load library data from file
-    try:
-        loaded_library = load_library_data("data/library_data.txt")
-        print("[SUCCESS] Library data loaded successfully")
-        print(f"Loaded library: {loaded_library.name}")
-    except FileNotFoundError:
-        print("[ERROR] Library data file not found")
-    except Exception as e:
-        print(f"[ERROR] Error loading data: {e}")
+    # # Load library data from file
+    # try:
+    #     loaded_library = load_library_data("data/library_data.txt")
+    #     print("[SUCCESS] Library data loaded successfully")
+    #     print(f"Loaded library: {loaded_library.name}")
+    # except FileNotFoundError:
+    #     print("[ERROR] Library data file not found")
+    # except Exception as e:
+    #     print(f"[ERROR] Error loading data: {e}")
     
-    # ========================================================================
-    # Interactive Menu (Simulated)
-    # ========================================================================
-    print("\n" + "="*60)
-    print("LIBRARY MANAGEMENT SYSTEM - INTERACTIVE DEMO")
-    print("="*60)
+    # # ========================================================================
+    # # Interactive Menu (Simulated)
+    # # ========================================================================
+    # print("\n" + "="*60)
+    # print("LIBRARY MANAGEMENT SYSTEM - INTERACTIVE DEMO")
+    # print("="*60)
     
-    # In a real application, this would be a while loop with input()
-    # For demonstration, we'll simulate a few interactions
+    # # In a real application, this would be a while loop with input()
+    # # For demonstration, we'll simulate a few interactions
     
-    print("\nSimulated User Interactions:")
-    print("1. User searches for 'Python'")
-    search_results = [book for book in library.books if 'Python' in book.title]
-    print(f"   Found {len(search_results)} books matching 'Python'")
+    # print("\nSimulated User Interactions:")
+    # print("1. User searches for 'Python'")
+    # search_results = [book for book in library.books if 'Python' in book.title]
+    # print(f"   Found {len(search_results)} books matching 'Python'")
     
-    print("\n2. User views their borrowed books")
-    user1_books = library.get_user_borrowed_books(1001)
-    print(f"   {user1.name} has {len(user1_books)} books borrowed")
+    # print("\n2. User views their borrowed books")
+    # user1_books = library.get_user_borrowed_books(1001)
+    # print(f"   {user1.name} has {len(user1_books)} books borrowed")
     
-    print("\n3. Display library statistics")
-    total_books = len(library.books)
-    available_books = len([b for b in library.books if b.is_available()])
-    print(f"   Total books: {total_books}")
-    print(f"   Available: {available_books}")
-    print(f"   Borrowed: {total_books - available_books}")
+    # print("\n3. Display library statistics")
+    # total_books = len(library.books)
+    # available_books = len([b for b in library.books if b.is_available()])
+    # print(f"   Total books: {total_books}")
+    # print(f"   Available: {available_books}")
+    # print(f"   Borrowed: {total_books - available_books}")
     
     print("\n" + "="*60)
     print("DEMONSTRATION COMPLETE!")

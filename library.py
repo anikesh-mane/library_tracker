@@ -192,3 +192,8 @@ class Library:
     
     def __str__(self):
         return f"Library: {self.name} ({len(self.__books)} books, {len(self.__users)} users)"
+    
+
+if __name__ == "__main__":
+    # Simple test to ensure the module runs without errors
+    print("Library module loaded successfully.")

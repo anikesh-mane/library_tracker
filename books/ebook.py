@@ -1,5 +1,7 @@
 from books.book import Book
 
+## EBook --> Book --> LibraryItem
+
 # ============================================================================
 # CONCEPT 18: INHERITANCE - Creating a Subclass
 # ============================================================================
@@ -48,7 +50,9 @@ class EBook(Book):
         """
         return days_late * 0.25  # Half the cost of physical books
     
+    # ========================================================================
     # EBook-specific methods
+    # ========================================================================
     def download(self):
         """Method specific to EBook - not available in parent class"""
         self.download_count += 1

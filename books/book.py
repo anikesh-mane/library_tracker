@@ -54,10 +54,18 @@ class Book(LibraryItem):
     # This protects data integrity
     
     # Getter methods (read-only access to private variables)
-    @property
+    @property # this decorator make the method accessible like an attribute !
     def book_id(self):
         """Property decorator makes this method accessible like an attribute"""
         return self.__book_id
+    
+    @book_id.setter
+    def book_id(self, value):
+        """Setter for book_id with validation"""
+        if isinstance(value, int) and value > 0:
+            self.__book_id = value
+        else:
+            print("Invalid book ID. Must be a positive integer.")
     
     @property
     def title(self):
